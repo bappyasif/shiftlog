@@ -57,6 +57,11 @@ def test_list_workers(client: TestClient):
     names = {w["name"] for w in response.json()}
     assert names == {"Jamie Lee", "Sam Osei"}
 
+def test_list_workers_exports(client: TestClient):
+    response = client.get("/workers/export")
+    assert response.status_code == 200
+    assert response.headers["Content-Type"] == "text/csv"
+    assert response.headers["Content-Disposition"] == "attachment; filename=workers.csv"
 
 def test_get_worker_not_found(client: TestClient):
     response = client.get("/workers/999")
