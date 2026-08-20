@@ -127,6 +127,16 @@ def delete_worker_request(
 
     return client.delete(f"/workers/{worker.id}", headers={"Confirm-Delete":"True"})
 
+def list_worker_request(
+    client: TestClient,
+    session: Session,
+    worker_id: int,
+    request_number: int,
+) -> Response:
+    workers_list = client.get("/workers")
+
+    return workers_list
+
 RATE_LIMITED_ENDPOINTS = [
     pytest.param(
         RateLimitedEndpoint(
