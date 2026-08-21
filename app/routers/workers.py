@@ -92,7 +92,7 @@ def list_workers(
     include_inactive: bool = Query(default=False),
     # Pagination parameters
     limit: int = Query(default=10, le=10, description="Max number of workers to return"),
-    offset: int = Query(default=0, le=30, description="Number of workers to skip")
+    offset: int = Query(default=0, ge=0, description="Number of workers to skip")
     ):
     """
     GET request:
