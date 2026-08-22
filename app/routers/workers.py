@@ -140,7 +140,7 @@ def export_worker_list(session: Session = Depends(get_session)):
 
     for worker in workers:
         # write data rows
-        writer.writerow([worker.id, worker.name, worker.role, worker.active, getattr(worker, "hourly_pay", None)])
+        writer.writerow([worker.id, worker.name, worker.role, worker.active, getattr(worker, "pay", None)])
 
     # move cursor to the beginning of the stream
     output.seek(0)
