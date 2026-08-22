@@ -133,10 +133,10 @@ def export_worker_list(session: Session = Depends(get_session)):
     # create a csv writer
     writer = csv.writer(output)
 
-    filednames = ["ID", "Name", "Role", "Active", "Hourly Pay"]
+    fieldnames = ["ID", "Name", "Role", "Active", "Hourly Pay"]
     
     # write heading row
-    writer.writerow(filednames)
+    writer.writerow(fieldnames)
 
     for worker in workers:
         # write data rows
