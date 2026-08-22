@@ -111,6 +111,9 @@ def list_workers(
     if name is not None:
         # used icontains() for case-insensitivity; added col from SQLmodel to avoid type warning in IDE
         statement = statement.where(col(Worker.name).icontains(name))
+
+    # applying limit and offset
+    statement = statement.limit(limit).offset(offset)
         
     return session.exec(statement).all()
 

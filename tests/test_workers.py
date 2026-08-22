@@ -64,6 +64,8 @@ def test_list_workers_pagination(client: TestClient):
     assert client.get("/workers?offset=1").status_code == 200
     assert client.get("/workers?limit=1&offset=1").status_code == 200
     assert client.get("/workers?limit=11&offset=31").status_code == 422
+    assert client.get("/workers?offset=100").status_code == 200
+    assert client.get("/workers?limit=5&offset=100").status_code == 200
 
 
 def test_get_worker_not_found(client: TestClient):
